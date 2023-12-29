@@ -6,7 +6,6 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './users/users.entity';
-console.log('app module');
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -14,7 +13,6 @@ console.log('app module');
     UsersModule,
     TypeOrmModule.forRootAsync({
       useFactory: () => {
-        console.log(process.env.POSTGRES_USER);
         return {
           type: 'postgres',
           host: 'localhost',

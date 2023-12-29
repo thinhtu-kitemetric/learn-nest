@@ -29,19 +29,16 @@ export class AuthService {
   }): Promise<any> {
     const hash: string = hashSync(password);
 
-    const newUser = await this.usersService.create({
+    return await this.usersService.create({
       username,
       password: hash,
     });
-
-    console.log(newUser);
   }
 
   async login(user: any) {
     const payload = { username: user.username, sub: user.id };
     return {
       access_token: this.jwtService.sign(payload),
-      secret: process.env.JWT_CONSTANTS,
     };
   }
 }

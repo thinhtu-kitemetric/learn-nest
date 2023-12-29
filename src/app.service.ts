@@ -1,10 +1,9 @@
-import { Injectable } from '@nestjs/common';
-import { jwtConstants } from './auth/constant';
+import { Injectable, Req } from '@nestjs/common';
 @Injectable()
 export class AppService {
-  getHello(): string {
-    // return 'Hello World!';
-    // return `${process.env.JWT_CONSTANTS}`;
-    return `${process.env.JWT_CONSTANTS}`;
+  getHello(@Req() req: Request) {
+    return {
+      data: `Hello world`,
+    };
   }
 }
